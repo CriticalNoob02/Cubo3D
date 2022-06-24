@@ -1,0 +1,107 @@
+*
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body
+{
+    display: flex;
+    justify-content:center ;
+    align-items: center;
+    min-height: 100vh;
+    background: #050505;
+}
+
+.cube
+{
+    position: relative;
+    width: 200px;
+    height: 200px;
+    transform-style: preserve-3d;
+    animation: rotacao 5s linear infinite;
+}
+
+.cube div
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+}
+
+.antes
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(#151515, #5bcdcb);
+    transform: rotateY(calc(90deg * var(--i))) translateZ(100px);
+    transition: 1s;
+}
+
+
+.top
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200px;
+    height: 200px;
+    background: #151515; 
+    transform: rotateX(90deg) translateZ(99px);
+}
+
+.top::before
+{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200px;
+    height: 200px;
+    background: #5fd5d3; 
+    transform:translateZ(-325px);
+    border-radius: 10%;
+    filter: blur(60px);
+    box-shadow: 0 0 120px #5fd5d325,
+                0 0 200px #5fd5d335,
+                0 0 300px #5fd5d345,
+                0 0 400px #5fd5d355,
+                0 0 500px #5fd5d365;
+    transition: 1s;
+}
+
+.cube:hover .antes{
+    background: linear-gradient(#151515, #387e5b);
+}
+.cube:hover .top::before
+{
+    box-shadow: 0 0 120px rgba(0, 200, 0, 0.1),
+                0 0 200px rgba(0, 200, 0, 0.2),
+                0 0 300px rgba(0, 200, 0, 0.3),
+                0 0 400px rgba(0, 200, 0, 0.4),
+                0 0 500px rgba(0, 200, 0, 0.5);
+    opacity: 0.7;
+}
+
+
+
+
+@keyframes rotacao
+{
+    0%
+    {
+        transform: rotateX(-30deg) rotateY(0);
+    
+    }
+    100%
+    {
+        transform: rotateX(-30deg) rotateY(360deg);
+    }
+}
